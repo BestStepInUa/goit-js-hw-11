@@ -1,0 +1,33 @@
+:root {
+  /* The main number of elements in Flexbox grid */
+  --items: 4;
+  /* The main gap indent in Flexbox grid */
+  --indent: 24px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(176, 48, 214, 0.5);
+  padding: 10px 0;
+}
+
+.search-input {
+  min-width: 265px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+  flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+}
