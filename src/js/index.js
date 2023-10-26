@@ -14,6 +14,7 @@ Refs.loadMoreBtn.addEventListener('click', onLoadMore);
 async function onSearchForm(e) {
     e.preventDefault();
     Refs.imgsGallery.innerHTML = '';
+    console.log(e.currentTarget.elements.searchQuery.value);    
     searchQuery = e.currentTarget.elements.searchQuery.value;
     fetchImgs(searchQuery)
         .then(galleryImgsMarckup);
