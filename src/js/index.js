@@ -11,14 +11,27 @@ const Refs = {
 Refs.searchForm.addEventListener('submit', onSearchForm);
 Refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-let searchQuery = '';
+let searchQuery;
+let currentQuery;
 
 async function onSearchForm(e) {
     e.preventDefault();
+    searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+     if (currentQuery === searchQuery) {          
+        alert("Error! Ви вже виконуєте пошук за даною ключовою фразою");
+        Refs.searchInput.value = '';
+        return;
+    } 
+     if (searchQuery === '') {
+        alert("Error! Потрібно вказати ключову фразу для пошуку");
+        Refs.searchInput.value = '';
+        return;
+    }     
+    Refs.searchInput.value = '';
     Refs.imgsGallery.innerHTML = '';
-    searchQuery = e.currentTarget.elements.searchQuery.value;
+    currentQuery = searchQuery;    
     fetchImgs(searchQuery)
-        .then(galleryImgsMarckup);    
+        .then(galleryImgsMarckup);
 };
 
 async function onLoadMore(e) {
