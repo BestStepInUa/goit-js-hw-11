@@ -22,7 +22,7 @@ async function onSearchForm(e) {
 };
 
 async function onLoadMore(e) {    
-    fetchImgs(searchQuery)
+    fetchImgs(`${ searchQuery }`)
         .then(galleryImgsMarckup);
 }
 
