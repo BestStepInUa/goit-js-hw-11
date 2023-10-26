@@ -21,8 +21,9 @@ async function onSearchForm(e) {
         .then(galleryImgsMarckup);    
 };
 
-async function onLoadMore(e) {    
-    fetchImgs(`${ searchQuery }`)
+async function onLoadMore(e) {
+    // console.log(`searchQuery: ${searchQuery}`);
+    fetchImgs(`${searchQuery}`)
         .then(galleryImgsMarckup);
 }
 

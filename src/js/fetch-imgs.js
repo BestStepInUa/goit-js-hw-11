@@ -17,11 +17,11 @@ export default async function fetchImgs(searchQuery) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        per_page: 8,
+        per_page: 40,
         page,
     });
 
-    console.log(`searchQuery: ${searchQuery}, page до запиту: ${page}`);
+    // console.log(`searchQuery: ${searchQuery}, page до запиту: ${page}`);
 
     return await axios.get(`${BASE_API_URL}`, {
         params,
@@ -35,7 +35,7 @@ export default async function fetchImgs(searchQuery) {
         })
         .then((data) => {
             page += 1;
-            console.log(`searchQuery: ${searchQuery}, page після запиту: ${page}`);
+            // console.log(`searchQuery: ${searchQuery}, page після запиту: ${page}`);
             currentQuery = searchQuery;            
             return data.hits;
         });
