@@ -15,7 +15,7 @@ let searchQuery;
 let currentQuery;
 
 async function onSearchForm(e) {
-    e.preventDefault();
+    e.preventDefault();    
     searchQuery = e.currentTarget.elements.searchQuery.value.trim();
      if (currentQuery === searchQuery) {          
         alert("Error! Ви вже виконуєте пошук за даною ключовою фразою");
@@ -29,9 +29,9 @@ async function onSearchForm(e) {
     }     
     Refs.searchInput.value = '';
     Refs.imgsGallery.innerHTML = '';
-    currentQuery = searchQuery;    
     fetchImgs(searchQuery)
         .then(galleryImgsMarckup);
+    currentQuery = searchQuery;
 };
 
 async function onLoadMore(e) {

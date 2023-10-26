@@ -1,13 +1,13 @@
 import axios from "axios";
 
 let page;
-let currentQuery = '';
+let previousQuery = '';
 
 export default async function fetchImgs(searchQuery) {
     const BASE_API_URL = 'https://pixabay.com/api/';
     const API_KEY = '40254298-f0122bcc19424dfed523c5016';
         
-    if (searchQuery !== currentQuery) {          
+    if (searchQuery !== previousQuery) {          
         page = 1;
     }
         
@@ -36,7 +36,7 @@ export default async function fetchImgs(searchQuery) {
         .then((data) => {
             page += 1;
             console.log(`searchQuery: ${searchQuery}, page після запиту: ${page}`);
-            currentQuery = searchQuery;            
+            previousQuery = searchQuery;            
             return data.hits;
         });
 };    
