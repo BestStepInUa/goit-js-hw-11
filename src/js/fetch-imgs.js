@@ -17,7 +17,7 @@ export default async function fetchImgs(searchQuery) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        per_page: 4,
+        per_page: 8,
         page,
     });
 
