@@ -8,14 +8,16 @@ const Refs = {
 }
 
 Refs.searchForm.addEventListener('submit', onSearchForm);
-Refs.loadMoreBtn.addEventListener('click', onLoadMore)
+Refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-function onSearchForm(e) {
+async function onSearchForm(e) {
     e.preventDefault();
     searchQuery = e.currentTarget.elements.searchQuery.value;
-    fetchImgs(searchQuery, page);    
+    fetchImgs(searchQuery)
+        .then(hits => console.log(hits));
 };
 
-function onLoadMore(e) {
-    fetchImgs(searchQuery, page);    
+async function onLoadMore(e) {
+    fetchImgs(searchQuery)
+        .then(hits => console.log(hits));
 }
