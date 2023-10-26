@@ -1,2 +1,0 @@
-:root{--items:4;--indent:24px}.search-form{background-color:rgba(176,48,214,.5);justify-content:center;gap:10px;padding:10px 0;display:flex}.search-input{min-width:265px}.gallery{gap:var(--indent);flex-wrap:wrap;flex-basis:calc((100% - var(--indent)*(var(--items) - 1))/var(--items));display:flex}button{cursor:pointer;font-weight:Medium;justify-content:center;align-items:center;padding:5px;display:flex}button:hover,button:focus{background-color:#c1d3d3}.load-more{margin:10px auto 0}
-/*# sourceMappingURL=index.b3f795b4.css.map */
