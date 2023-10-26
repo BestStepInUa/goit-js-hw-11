@@ -11,16 +11,17 @@ const Refs = {
 Refs.searchForm.addEventListener('submit', onSearchForm);
 Refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
+let searchQuery = '';
+
 async function onSearchForm(e) {
     e.preventDefault();
     Refs.imgsGallery.innerHTML = '';
-    console.log(e.currentTarget.elements.searchQuery.value);    
-    const searchQuery = e.currentTarget.elements.searchQuery.value;
+    searchQuery = e.currentTarget.elements.searchQuery.value;
     fetchImgs(searchQuery)
-        .then(galleryImgsMarckup);
+        .then(galleryImgsMarckup);    
 };
 
-async function onLoadMore(e) {
+async function onLoadMore(e) {    
     fetchImgs(searchQuery)
         .then(galleryImgsMarckup);
 }
