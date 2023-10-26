@@ -17,26 +17,27 @@ export default async function fetchImgs(searchQuery) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        per_page: 40,
+        per_page: 4,
         page,
     });
 
     console.log(`searchQuery: ${searchQuery}, page до запиту: ${page}`);
 
-    await axios.get(`${BASE_API_URL}`, {
+    return await axios.get(`${BASE_API_URL}`, {
         params,
         headers: {
             'Content-Type': 'application/json',
         }
     })
         .then(resp => {
-            console.log(resp.data.hits);
-            return resp.data.hits;
+            console.log(resp.data);
+            return resp.data;                                             
         })
-        .then(() => {
+        .then((data) => {
             page += 1;
             console.log(`searchQuery: ${searchQuery}, page після запиту: ${page}`);
             currentQuery = searchQuery;            
+            return data.hits;
         });
 };    
             

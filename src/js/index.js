@@ -1,4 +1,5 @@
 import fetchImgs from "./fetch-imgs";
+import galleryImgsTpl from '../templates/gallery-items.hbs';
 
 const Refs = {
     searchForm: document.querySelector('.search-form'),
@@ -12,12 +13,17 @@ Refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 async function onSearchForm(e) {
     e.preventDefault();
+    Refs.imgsGallery.innerHTML = '';
     searchQuery = e.currentTarget.elements.searchQuery.value;
     fetchImgs(searchQuery)
-        .then(hits => console.log(hits));
+        .then(galleryImgsMarckup);
 };
 
 async function onLoadMore(e) {
     fetchImgs(searchQuery)
-        .then(hits => console.log(hits));
+        .then(galleryImgsMarckup);
+}
+
+function galleryImgsMarckup(hits) {
+    Refs.imgsGallery.insertAdjacentHTML('beforeend', galleryImgsTpl(hits));
 }
