@@ -30,4 +30,14 @@ button {
   align-items: center;
   cursor: pointer;
   padding: 5px;
+  font-weight: Medium; /* 500 */
+}
+
+button:hover,
+button:focus {
+  background-color: rgb(193, 211, 211);
+}
+
+.load-more {
+  margin: 10px auto 0;
 }
