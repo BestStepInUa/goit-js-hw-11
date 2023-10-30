@@ -22,6 +22,7 @@ Refs.loadMoreBtn.style.display = 'none';
 let searchQuery;
 let currentQuery;
 let page;
+let currentPage;
 const perPage = 40;
 
 async function onSearchForm(e) {
@@ -48,6 +49,7 @@ async function onSearchForm(e) {
             Refs.imgsGallery.innerHTML = '';            
             galleryImgsMarckup(data.hits);
             page++;
+            currentPage = page;
             Refs.loadMoreBtn.style.display = 'block';
             currentQuery = searchQuery;
             console.log(`searchQuery: ${searchQuery}, page after fetch: ${page}`);
@@ -55,6 +57,7 @@ async function onSearchForm(e) {
             Notify.failure("Sorry, there are no images matching your search query. Please try again");
             Refs.searchInput.value = '';
             searchQuery = currentQuery;
+            page = currentPage;
         }
     } catch (error) {
         console.error(error.message);   
@@ -78,6 +81,7 @@ async function onLoadMore(e) {
             }
 
             page++;
+            currentPage = page;
             Refs.loadMoreBtn.style.display = 'block';
             currentQuery = searchQuery;
             console.log(`searchQuery: ${searchQuery}, page after fetch: ${page}`);
