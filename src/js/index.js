@@ -53,7 +53,8 @@ async function onSearchForm(e) {
             console.log(`searchQuery: ${searchQuery}, page after fetch: ${page}`);
         } else {
             Notify.failure("Sorry, there are no images matching your search query. Please try again");
-            Refs.loadMoreBtn.style.display = 'none';
+            Refs.searchInput.value = '';
+            searchQuery = currentQuery;
         }
     } catch (error) {
         console.error(error.message);   
