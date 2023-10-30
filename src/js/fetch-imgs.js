@@ -21,7 +21,10 @@ export default async function fetchImgs(searchQuery, page) {
         }
     })
         .then(resp => {
-            console.log('Fetch data: ', resp.data);
-            return resp.data.hits;                                             
+            console.log('Fetch data: ', resp);
+            if (!resp.status) {
+                throw new Error(resp.status || resp.statusText);
+            }
+            return resp.data;                                             
         });
 };           
