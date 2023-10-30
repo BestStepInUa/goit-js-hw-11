@@ -70,8 +70,7 @@ async function onLoadMore(e) {
         let data = await fetchImgs(searchQuery, page);
         console.log('Hits: ', data.hits);
         if (data.hits && data.hits.length > 0) {
-            Refs.searchInput.value = '';
-            Refs.imgsGallery.innerHTML = '';
+            Refs.searchInput.value = '';            
             galleryImgsMarckup(data.hits);
 
             if (perPage * page >= data.totalHits) {
