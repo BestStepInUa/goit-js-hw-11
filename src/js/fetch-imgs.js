@@ -1,16 +1,9 @@
 import axios from "axios";
 
-let page;
-let previousQuery = '';
-
-export default async function fetchImgs(searchQuery) {
+export default async function fetchImgs(searchQuery, page) {
     const BASE_API_URL = 'https://pixabay.com/api/';
-    const API_KEY = '40254298-f0122bcc19424dfed523c5016';
-        
-    if (searchQuery !== previousQuery) {          
-        page = 1;
-    }
-        
+    const API_KEY = '40254298-f0122bcc19424dfed523c5016';        
+         
     const params = new URLSearchParams({
         key: API_KEY,
         q: searchQuery,
@@ -20,9 +13,7 @@ export default async function fetchImgs(searchQuery) {
         per_page: 40,
         page,
     });
-
-    console.log(`searchQuery: ${searchQuery}, page до запиту: ${page}`);
-
+      
     return await axios.get(`${BASE_API_URL}`, {
         params,
         headers: {
@@ -30,14 +21,7 @@ export default async function fetchImgs(searchQuery) {
         }
     })
         .then(resp => {
-            console.log(resp.data);
-            return resp.data;                                             
-        })
-        .then((data) => {
-            page += 1;
-            console.log(`searchQuery: ${searchQuery}, page після запиту: ${page}`);
-            previousQuery = searchQuery;            
-            return data.hits;
+            console.log('Fetch data: ', resp.data);
+            return resp.data.hits;                                             
         });
-};    
-            
+};           
